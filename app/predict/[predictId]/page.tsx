@@ -58,7 +58,14 @@ export default function PredictPage() {
           </div>
         </Card>
         <Card>
-          <Title>{item.title}</Title>
+          <Flex
+            justifyContent="start"
+            alignItems="baseline"
+            className="space-x-2"
+          >
+            <Text>覚悟: </Text>
+            <Title className="text-xl">{item.title}</Title>
+          </Flex>
           <Flex
             justifyContent="start"
             alignItems="baseline"

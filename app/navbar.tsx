@@ -6,6 +6,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 // import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
+import { ConnectWallet, useAddress } from '@thirdweb-dev/react';
 
 const navigation = [{ name: 'Home', href: '/' }];
 
@@ -15,6 +16,7 @@ function classNames(...classes: string[]) {
 
 export default function Navbar({ user }: { user: any }) {
   const pathname = usePathname();
+  const address = useAddress();
 
   return (
     <Disclosure as="nav" className="bg-white shadow-sm">
@@ -66,16 +68,22 @@ export default function Navbar({ user }: { user: any }) {
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <Menu as="div" className="relative ml-3">
+                  <ConnectWallet
+                    theme="light"
+                    // detailsBtn={() => {
+                    //   return <button> {address} </button>;
+                    // }}
+                  ></ConnectWallet>
                   <div>
                     <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">
                       <span className="sr-only">Open user menu</span>
-                      <Image
+                      {/* <Image
                         className="h-8 w-8 rounded-full"
                         src={user?.image || 'https://avatar.vercel.sh/leerob'}
                         height={32}
                         width={32}
                         alt={`${user?.name || 'placeholder'} avatar`}
-                      />
+                      /> */}
                     </Menu.Button>
                   </div>
                   <Transition
